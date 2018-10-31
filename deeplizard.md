@@ -159,3 +159,49 @@ tells which argument when supplied to a function as input results in the functio
 
 
 
+### Datasets and DataLoaders 
+
+`train_set`  `train_loader` 
+
+```python
+len(train_set)
+train_set.train_labels
+train_set.train_labels.bincount() # 用于计算每一类有多少个 返回list index为类 元素为个数
+```
+
+we use the balance train and validation set, like copying the less common class
+
+this is kind of called oversampling
+
+[also see here](https://www.zhihu.com/question/269698662)
+
+```python
+sample = next(iter(train_set))
+img, label = sample
+
+image.shape   troch.Size([1,28,28])
+label.shape   torch.Size([]) # 因为是标量
+plt.imshow(image.squeeze(),cmp='gray')
+```
+
+
+
+sequence type and
+
+ sequence unpacking also called deconstructing the object
+
+
+
+```
+batch = next(iter(train_loader))
+imgs, labels = batch
+imgs.shape   troch.Size([10,1,28,28])
+labels.shape   torch.Size([10])
+
+grid = torchvision.utils.make_grid(images,nrow=10)
+
+plt.figure(figsize=(15,15))
+plt.imshow(np.transposed(grad,(1,2,0)))
+print('labels',labels)
+```
+
